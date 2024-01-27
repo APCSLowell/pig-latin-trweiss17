@@ -2,10 +2,6 @@
 
 public class Main {
 	
-	public static void main(final String[] args) {
-		PigLatin sim = new PigLatin();
-        	//sim.tester();
-	}
 	public void setup() 
 {
   String[] lines = {"beast","dough","happy","question","star","three","eagle","try"};
@@ -29,10 +25,23 @@ public int findFirstVowel(String word){
 }
 
 
-public String pigLatin(String word)
-//precondition: sWord is a valid String of length greater than 0
-//postcondition: returns the pig latin equivalent of sWord
-{
+public String pigLatin(String word){
+  if(findFirstVowel(word)==0){
+    return word + "way";
+  }
+  if(findFirstVowel(word) == 2){
+    return word.substring(2, word.length()) + word.substring(0,2) + "ay";
+  }
+  if(word.substring(0,2).equals("qu")){
+    return word.substring(2, word.length()) + word.substring(0,2) + "ay";
+  }
+  if(findFirstVowel(word) == 3){
+    return word.substring(3, word.length()) + word.substring(0,3) + "ay";
+  }
+  if(findFirstVowel(word) == 1){
+    return word.substring(1, word.length()) + word.substring(0,1) + "ay";
+  }
+
   if(findFirstVowel(word) == -1)
   {
     return word + "ay";
@@ -42,6 +51,7 @@ public String pigLatin(String word)
     return "ERROR!";
   }
 }
+
 
 
 }
